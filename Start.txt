@@ -1,0 +1,52 @@
+1. Set up configuration files:
+First of all you need to go to templates folder ad change json files to fit you environment
+1.1 configs.json: General settings of script execution
+{
+    "createConnections": false, // Possible values: true/false
+//Set to true if you want to automatically create Kafka-Connect connectors
+    "kafkaConnectEndpoint": "http://localhost:8083/connectors", // Possible values: String
+//If you set createConnections to true you need to set up Kafka-Connect endpoint URL
+    "createKafkaConnector": true, // Possible values: true/false
+//If set to true automatically creates IBMi -> Kafka topic (AS400 DQ Source) connector based on connectorKafkaConfig.json file
+    "createJDBCConnector": false, // Possible values: true/false
+//If set to true automatically creates Kafka topic -> DB-table (JdbcSink) connector based on connectorJDBCConfig.json file
+    "createSnowflakeConnector": false // Possible values: true/false
+//If set to true automatically creates Kafka topic -> Snowflake table (AS400 DQ Source) connector based on connectorSnowflakeConfig.json file
+}
+1.2 connection.json: Configuration for IBMi connection
+{
+    "connectionName" : "---", //String
+// Name of your connection
+    "host":"xxx.xxx.xxx.xxx", //String
+    "port":"xxxx", //String
+// Host and port to connect to your IBMi 
+    "userName":"USERNAME", //String
+    "userNameXPosition":"53",//String
+    "userNameYPosition":"8",//String
+    "password":"PASSWORD",//String
+    "passwordXPosition":"53",//String
+    "passwordYPosition":"9",//String
+// Username and password to connect to IBMi Green Screen session (including x and y position of login fields)
+    "initialKeyString": "addlible infocdccom,[enter],[enter],CDCMAINMNU,[enter],[enter],[SET_INFIELD 49 20],1,[enter],[enter]", // String
+// Set of commands to get to tables screen
+    "sslType":"TLS", // Possible values: TLS, NONE
+// set SSL type
+    "reconnectionAttempts":"1", //Number
+// Number of reconnect attempts
+    "timeBetweenAttempts":300, //Number
+// Time between reconnect attempts
+    "debugMode":"true" // Possible values: true/false
+// Enable if need to see screen session snapshots
+}
+1.3 bulkConfigKafkaSourceTemplate.json, bulkConfigJDBCSinkTemplate.json, bulkConfigSnowflakeSinkTemplate.json
+Set up configuration for connectors needed.
+1.4: bulkConfigTables.csv
+Fill this file with tables you need to add or update
+libName;tableName //leave this as titles
+TBL_LIB; TBL_NAME  
+2. Start script session using StartWindows.bat or StartLinux.sh files
+Wait until it finished
+3. See you results section:
+3.1 updateTableResults.json: Result of update tables script
+3.2 kafkaParamsResults.json: Array of configurations to deploy to Kafka Connect manually (will include configuration of all marked true targets in 1.1 step for tables with status “successful update”)
+4. If script fails it work error report will be generated ad errors folder 

@@ -1,0 +1,19 @@
+{
+  "name": "---LibName_TblName---",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.json.JsonSchemaConverter",
+    "connection.url": "jdbc:mysql://xxxxxx.amazonaws.com:3306/db",
+    "connection.user": "UserName",
+    "connection.password": "Password",
+    "insert.mode": "upsert",
+    "pk.mode": "record_value",
+    "pk.fields": "--generated--",
+    "auto.create": "true",
+    "max.retries": "2",
+    "value.converter.schema.registry.url": "http://xxxxxxx.amazonaws.com:8081",
+    "topics": "---LibName_TblName---",
+    "table.name.format": "---Format---"
+  }
+}

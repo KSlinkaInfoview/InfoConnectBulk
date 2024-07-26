@@ -1,0 +1,16 @@
+{
+  "name": "---LibName_TblName---",
+  "config": {
+    "tasks.max":1,
+    "key.converter":"org.apache.kafka.connect.storage.StringConverter",
+    "value.converter":"org.apache.kafka.connect.json.JsonConverter",
+    "topics":"---LibName_TblName---",
+    "snowflake.url.name":"xxxxxxx.snowflakecomputing.com",
+    "snowflake.user.name":"confluent",
+    "snowflake.private.key":"MII---==",
+    "snowflake.private.key.passphrase":"passfhrase",
+    "snowflake.database.name":"SNOWFLAKEDB",
+    "snowflake.schema.name":"SNOWFLAKESHEMA",
+    "value.converter.schemas.enable":false
+  }
+}

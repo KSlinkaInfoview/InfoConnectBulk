@@ -1,0 +1,7 @@
+{
+    "createKafkaConnectors": false,
+    "kafkaConnectEndpoint": "http://localhost:8083/connectors",
+    "createIBMiSource": true,
+    "createJDBCSink": false,
+    "createSnowflakeSink": false
+}

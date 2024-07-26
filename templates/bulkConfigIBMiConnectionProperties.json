@@ -1,0 +1,16 @@
+{
+    "connectionName" : "connectionName",
+    "host":"65.183.178.49",
+    "port":"992",
+    "userName":"MULEDEMOAY",
+    "userNameXPosition":"53",
+    "userNameYPosition":"8",
+    "password":"MULEDEMO12",
+    "passwordXPosition":"53",
+    "passwordYPosition":"9",
+    "initialKeyString": "addlible infocdccom,[enter],[enter],CDCMAINMNU,[pf4],[SET_INFIELD 37 6],infocdcdem,[enter],[enter],[SET_INFIELD 49 20],1,[enter],[enter]",
+    "sslType":"TLS",
+    "reconnectionAttempts":"1",
+    "timeBetweenAttempts":300,
+    "debugMode":"true"
+}
